@@ -1,0 +1,79 @@
+<div class="myclass">
+<ion-header >
+      <ion-toolbar color="#00995D">
+        <ion-buttons slot="secondary">
+          <fa-icon [icon]="['fa', 'bars']" ></fa-icon>    
+        </ion-buttons>
+
+        <ion-buttons slot="start">
+          <ion-button>
+            <fa-icon [icon]="['fa', 'angle-left']" slot="icon-only"></fa-icon>
+          </ion-button>
+        </ion-buttons>
+        <ion-title>ANIVERSARIANTES</ion-title>
+      </ion-toolbar>
+</ion-header>
+</div>
+
+<ion-content >
+
+  <!-- Default Segment -->
+<ion-segment  [(ngModel)]="segment" (ionChange)="segmentChanged($event)">
+  <ion-segment-button value="Aniversarios">
+    <ion-label>Aniversários</ion-label>
+   
+  </ion-segment-button>
+  <ion-segment-button value="Unimed">
+    <ion-label>Unimed</ion-label>
+  </ion-segment-button>
+</ion-segment>
+
+<div>  
+<div class="card1" [ngSwitch]="segment">
+
+  <ion-card class="noborder"  *ngSwitchCase="'Aniversarios'">
+      <h1>Veja os cooperados que comemoram aniversário. Selecione uma data ou pesquise pelo nome.</h1>
+      <div class="ion-padding-vertical" >          
+          <div class="data1">
+              <ion-item >
+                  <fa-icon [icon]="['fa', 'angle-right']" slot="end"></fa-icon>
+                  OUTUBRO - 2017
+                  <fa-icon [icon]="['far', 'calendar-alt']" slot="start"></fa-icon>
+                </ion-item>
+          </div>
+        </div>
+
+          <input class="myinput" placeholder="Nome do aniversariante" >            
+          <ion-searchbar *ngIf="searchBarActive" placeholder="Nome do aniversariante" (ionInput)="getItems($event)">            
+            </ion-searchbar>
+
+         <br><br>
+          <ion-card class="card-list">
+            <ion-card-title>
+              <ion-text class="left">
+                  ANIVERSARIANTES DO DIA 
+              </ion-text>
+              <ion-text class="right">
+                  30 
+                  <p>Out</p>
+              </ion-text>
+            </ion-card-title>
+
+            <ion-card-content>
+                <div *ngFor="let user of userArray">
+                  <p class="spacelines">
+                      {{ user.name }}
+                  </p>
+                          
+                </div>              
+            </ion-card-content>        
+          </ion-card>
+  </ion-card>
+
+    <ion-card  *ngSwitchCase="'Unimed'">
+    </ion-card>
+
+  </div>
+</div>
+
+</ion-content>
