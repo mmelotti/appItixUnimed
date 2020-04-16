@@ -1,5 +1,5 @@
 # app clone Unimed
-App - Clone Unimed
+App - Simple Unimed Clone
 
 Frontend developed using:
 
